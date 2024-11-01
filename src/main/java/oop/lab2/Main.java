@@ -17,7 +17,8 @@ public class Main {
         do {
             coffee = barista.getCoffee();
             if (coffee != null) {
-                System.out.println(coffee.getName());
+                coffee.printCoffeeDetails();
+                System.out.println("==================================");
             }else {
                 System.out.println("Nobody ordered the coffee");
             }

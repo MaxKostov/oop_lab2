@@ -18,4 +18,11 @@ public class Cappuccino extends Coffee{
     public String getCoffee() {
         return coffee;
     }
+
+    @Override
+    public void printCoffeeDetails() {
+        System.out.println("Making " + coffee);
+        System.out.println("Intensity set to " + super.getCoffeeIntensity());
+        System.out.println("Adding " + mlOfMilk + " ml of milk");
+    }
 }

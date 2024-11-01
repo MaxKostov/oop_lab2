@@ -16,4 +16,11 @@ public class Americano extends Coffee{
     public String getCoffeeName() {
         return coffeeName;
     }
+
+    @Override
+    public void printCoffeeDetails() {
+        System.out.println("Making " + coffeeName);
+        System.out.println("Intensity set to " + super.getCoffeeIntensity());
+        System.out.println("Adding " + mlOfWater + " ml of water");
+    }
 }

@@ -15,7 +15,16 @@ public class PumpkinSpiceLatte extends Cappuccino{
         return mgOfPumpkinSpice;
     }
 
+    @Override
     public String getName() {
         return name;
+    }
+
+    @Override
+    public void printCoffeeDetails() {
+        System.out.println("Making " + name);
+        System.out.println("Intensity set to " + super.getCoffeeIntensity());
+        System.out.println("Adding " + super.getMlOfMilk() + " ml of milk");
+        System.out.println("Adding " + mgOfPumpkinSpice + " mg of pumpkins");
     }
 }

@@ -19,4 +19,12 @@ public class SyrupCappuccino extends Cappuccino{
     public SyrupType getSyrup() {
         return syrup;
     }
+
+    @Override
+    public void printCoffeeDetails() {
+        System.out.println("Making " + coffee);
+        System.out.println("Intensity set to " + super.getCoffeeIntensity());
+        System.out.println("Adding " + super.getMlOfMilk() + " ml of milk");
+        System.out.println("Adding " + syrup + " syrup");
+    }
 }

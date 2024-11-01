@@ -17,4 +17,9 @@ public class Coffee {
     public Intensity getCoffeeIntensity() {
         return coffeeIntensity;
     }
+
+    public void printCoffeeDetails() {
+        System.out.println("Making " + name);
+        System.out.println("Intensity set to " + coffeeIntensity);
+    }
 }

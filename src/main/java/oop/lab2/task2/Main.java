@@ -1,9 +1,8 @@
-package oop.lab2;
+package oop.lab2.task2;
 
-import oop.lab2.task1.Barista;
-import oop.lab2.task1.coffee.*;
-import oop.lab2.task1.enums.Intensity;
-import oop.lab2.task1.enums.SyrupType;
+import oop.lab2.task2.coffee.*;
+import oop.lab2.task2.enums.Intensity;
+import oop.lab2.task2.enums.SyrupType;
 
 public class Main {
     public static void main(String[] args) {

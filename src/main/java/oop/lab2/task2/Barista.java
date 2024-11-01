@@ -1,6 +1,6 @@
-package oop.lab2.task1;
+package oop.lab2.task2;
 
-import oop.lab2.task1.coffee.Coffee;
+import oop.lab2.task2.coffee.Coffee;
 
 import java.util.LinkedList;
 import java.util.Queue;

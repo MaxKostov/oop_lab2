@@ -1,6 +1,6 @@
-package oop.lab2.task1.coffee;
+package oop.lab2.task2.coffee;
 
-import oop.lab2.task1.enums.Intensity;
+import oop.lab2.task2.enums.Intensity;
 
 public class Coffee {
     private Intensity coffeeIntensity;
@@ -16,5 +16,10 @@ public class Coffee {
 
     public Intensity getCoffeeIntensity() {
         return coffeeIntensity;
+    }
+
+    public void printCoffeeDetails() {
+        System.out.println("Making " + name);
+        System.out.println("Intensity set to " + coffeeIntensity);
     }
 }

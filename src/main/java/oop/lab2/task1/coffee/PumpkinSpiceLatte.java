@@ -2,7 +2,7 @@ package oop.lab2.task1.coffee;
 
 import oop.lab2.task1.enums.Intensity;
 
-public class PumpkinSpiceLatte extends Cappuccino{
+public class PumpkinSpiceLatte extends Cappuccino {
     private int mgOfPumpkinSpice;
     private final String name = "PumpkinSpiceLatte";
 
@@ -15,16 +15,8 @@ public class PumpkinSpiceLatte extends Cappuccino{
         return mgOfPumpkinSpice;
     }
 
-    @Override
     public String getName() {
-        return name;
+        return this.name;
     }
 
-    @Override
-    public void printCoffeeDetails() {
-        System.out.println("Making " + name);
-        System.out.println("Intensity set to " + super.getCoffeeIntensity());
-        System.out.println("Adding " + super.getMlOfMilk() + " ml of milk");
-        System.out.println("Adding " + mgOfPumpkinSpice + " mg of pumpkins");
-    }
 }

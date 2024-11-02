@@ -2,11 +2,35 @@ package oop.lab2.task4;
 
 import oop.lab2.task4.barista.Barista;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
 public class Main {
     public static void main(String[] args) {
         Barista barista = new Barista();
-        barista.orderCoffee();
-        System.out.println("-------------------------------------");
-        barista.getCoffee();
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        boolean running = true;
+
+        while (running) {
+            System.out.println("\nBarista:");
+            System.out.println("1. Order a coffee");
+            System.out.println("2. Get your coffee");
+            System.out.println("3. Exit");
+            System.out.print("Select an option: ");
+
+            try {
+                int choice = Integer.parseInt(br.readLine());
+                switch (choice) {
+                    case 1 -> barista.orderCoffee();
+                    case 2 -> barista.getCoffee();
+                    case 3 -> {
+                        System.out.println("Bye!");
+                        running = false;
+                    }
+                }
+            } catch (Exception e) {
+                System.out.println("Invalid input");
+            }
+        }
     }
 }

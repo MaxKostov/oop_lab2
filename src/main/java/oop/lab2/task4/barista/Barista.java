@@ -7,11 +7,12 @@ import oop.lab2.task4.enums.SyrupType;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.HashMap;
+
 
 public class Barista {
-    private Queue<Coffee> coffees = new LinkedList<>();
+    private String orderID;
+    private HashMap<String, Coffee> coffees = new HashMap<>();
 
     public Barista() {
     }
@@ -23,14 +24,13 @@ public class Barista {
 
         try {
             while (true) {
-                System.out.print("Enter mg of pumpkin spice: ");
+                System.out.print("\nEnter mg of pumpkin spice: ");
                 String s = br.readLine();
                 try {
                     mg = Integer.parseInt(s);
                     if (mg < 10 || mg > 3000) {
                         System.out.println("The coffee will taste bad.");
                         System.out.println("Please specify another quantity.");
-                        System.out.println(" ");
                     }
                     else {
                         break;
@@ -54,14 +54,13 @@ public class Barista {
 
         try {
             while (true) {
-                System.out.print("Enter ml of milk: ");
+                System.out.print("\nEnter ml of milk: ");
                 String s = br.readLine();
                 try {
                     milk = Integer.parseInt(s);
                     if (milk < 10 || milk > 100) {
                         System.out.println("The coffee will taste bad.");
                         System.out.println("Please specify another quantity.");
-                        System.out.println(" ");
                     }
                     else {
                         break;
@@ -85,14 +84,13 @@ public class Barista {
 
         try {
             while (true) {
-                System.out.print("Enter ml of water: ");
+                System.out.print("\nEnter ml of water: ");
                 String s = br.readLine();
                 try {
                     water = Integer.parseInt(s);
                     if (water < 10 || water > 100) {
                         System.out.println("The coffee will taste bad.");
                         System.out.println("Please specify another quantity.");
-                        System.out.println(" ");
                     }
                     else {
                         break;
@@ -112,7 +110,7 @@ public class Barista {
     private Intensity askForIntensity() {
         int intensity = 0;
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        System.out.println("Select an intensity: ");
+        System.out.println("\nSelect an intensity: ");
         System.out.println("1. Light");
         System.out.println("2. Normal");
         System.out.println("3. Strong");
@@ -154,7 +152,7 @@ public class Barista {
     private SyrupType askForSyrup() {
         int syrup = 0;
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        System.out.println("Select an intensity: ");
+        System.out.println("\nSelect an intensity: ");
         System.out.println("1. Macadamia");
         System.out.println("2. Vanilla");
         System.out.println("3. Coconut");
@@ -205,8 +203,10 @@ public class Barista {
         return SyrupType.VANILLA;
     }
 
-    public void orderCoffee() {
-        System.out.println("Which coffee would you like to order?");
+    public void orderCoffee() throws InterruptedException {
+        Coffee coffee = null;
+        String name = "Noname";
+        System.out.println("\nWhich coffee would you like to order?");
         System.out.println("1. Simple coffee");
         System.out.println("2. Americano");
         System.out.println("3. Cappuccino");
@@ -239,36 +239,77 @@ public class Barista {
         switch (choice) {
             case 1 -> {
                 Intensity intensity = askForIntensity();
-                coffees.add(Coffee.makeCoffee(intensity));
+                coffee = Coffee.makeCoffee(intensity);
             }
             case 2 -> {
                 Intensity intensity = askForIntensity();
                 int water = askForWater();
-                coffees.add(Americano.makeAmericano(intensity, water));
+                coffee = Americano.makeAmericano(intensity, water);
             }
             case 3 -> {
                 Intensity intensity = askForIntensity();
                 int milk = askForMilk();
-                coffees.add(Cappuccino.makeCappuccino(intensity, milk));
+                coffee = Cappuccino.makeCappuccino(intensity, milk);
             }
             case 4 -> {
                 Intensity intensity = askForIntensity();
                 int milk = askForMilk();
                 int pumpkin = askForPumpkin();
-                coffees.add(PumpkinSpiceLatte.makePumpkinSpiceLatte(intensity, milk, pumpkin));
+                coffee = PumpkinSpiceLatte.makePumpkinSpiceLatte(intensity, milk, pumpkin);
             }
             case 5 -> {
                 Intensity intensity = askForIntensity();
                 int milk = askForMilk();
                 SyrupType syrup = askForSyrup();
-                coffees.add(SyrupCappuccino.makeSyrupCappuccino(intensity, milk, syrup));
+                coffee = SyrupCappuccino.makeSyrupCappuccino(intensity, milk, syrup);
             }
         }
 
+        System.out.print("\nWhat's your name: ");
+        try {
+            name = reader.readLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+        int total = 50;
+        System.out.print("Preparing the order: [");
+
+        for (int i = 0; i < total; i++) {
+            Thread.sleep(100);
+            System.out.print("#");
+        }
+
+        System.out.println("]");
+
+        coffees.put(name, coffee);
+        System.out.println("The order has been completed!");
     }
 
     public void getCoffee() {
-        Coffee c = coffees.poll();
-        c.printCoffeeDetails();
+        System.out.println("\nCompleted coffee: ");
+        for (String name : coffees.keySet()) {
+            System.out.println(coffees.get(name).getName() + " for " + name);
+        }
+
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String id = null;
+        try {
+            System.out.print("Enter your name: ");
+            id = br.readLine();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        Coffee c = coffees.get(id);
+        if (c == null) {
+            System.out.println("There is no coffee for you!");
+        }
+        else {
+            coffees.remove(id);
+            System.out.println("Coffee for " + id + "!");
+            c.printCoffeeDetails();
+            System.out.println("Thank you!");
+        }
     }
 }

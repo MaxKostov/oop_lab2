@@ -289,6 +289,10 @@ public class Barista {
 
     public void getCoffee() {
         System.out.println("\nCompleted coffee: ");
+        if (coffees.isEmpty()) {
+            System.out.println("Nobody ordered the coffee!");
+            return;
+        }
         for (String name : coffees.keySet()) {
             System.out.println(coffees.get(name).getName() + " for " + name);
         }

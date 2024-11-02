@@ -12,7 +12,8 @@ public class SyrupCappuccino extends Cappuccino{
         this.syrup = syrup;
     }
 
-    public String getCoffee() {
+    @Override
+    public String getName() {
         return coffee;
     }
 
@@ -22,9 +23,7 @@ public class SyrupCappuccino extends Cappuccino{
 
     @Override
     public void printCoffeeDetails() {
-        System.out.println("Making " + coffee);
-        System.out.println("Intensity set to " + super.getCoffeeIntensity());
-        System.out.println("Adding " + super.getMlOfMilk() + " ml of milk");
-        System.out.println("Adding " + syrup + " syrup");
+        super.printCoffeeDetails();
+        System.out.println("Syrup: " + syrup);
     }
 }

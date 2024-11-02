@@ -1,8 +1,8 @@
-package oop.lab2.task2.coffee;
+package oop.lab2.task3.coffee;
 
-import oop.lab2.task2.enums.Intensity;
+import oop.lab2.task3.enums.Intensity;
 
-public class Cappuccino extends Coffee{
+public class Cappuccino extends Coffee {
     private int mlOfMilk;
     private final String coffee = "Cappuccino";
 
@@ -24,5 +24,13 @@ public class Cappuccino extends Coffee{
     public void printCoffeeDetails() {
         super.printCoffeeDetails();
         System.out.println("Milk: " + mlOfMilk + " ml");
+    }
+
+    public static Coffee makeCappuccino(Intensity intensity, int mlOfMilk) {
+        var cappuccino = new Cappuccino(intensity, mlOfMilk);
+        System.out.println("Making " + cappuccino.coffee);
+        System.out.println("Intensity set to " + intensity);
+        System.out.println("Adding " + mlOfMilk + " ml of milk");
+        return cappuccino;
     }
 }

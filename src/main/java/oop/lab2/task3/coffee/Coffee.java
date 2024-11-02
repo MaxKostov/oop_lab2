@@ -1,6 +1,6 @@
-package oop.lab2.task2.coffee;
+package oop.lab2.task3.coffee;
 
-import oop.lab2.task2.enums.Intensity;
+import oop.lab2.task3.enums.Intensity;
 
 public class Coffee {
     private Intensity coffeeIntensity;
@@ -21,5 +21,12 @@ public class Coffee {
     public void printCoffeeDetails() {
         System.out.println("Coffee name: " + getName());
         System.out.println("Intensity: " + coffeeIntensity);
+    }
+
+    public static Coffee makeCoffee(Intensity coffeeIntensity) {
+        Coffee coffee = new Coffee(coffeeIntensity);
+        System.out.println("Opening Jacobs 3 in 1");
+        System.out.println("Fill it with hot water");
+        return coffee;
     }
 }

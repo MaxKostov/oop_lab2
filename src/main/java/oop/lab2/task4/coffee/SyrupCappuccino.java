@@ -27,12 +27,15 @@ public class SyrupCappuccino extends Cappuccino {
         System.out.println("Syrup: " + syrup);
     }
 
+    @Override
+    public void recipeCoffee() {
+        super.recipeCoffee();
+        System.out.println("Adding " + syrup + " syrup");
+    }
+
     public static Coffee makeSyrupCappuccino(Intensity intensity, int mlOfMilk, SyrupType syrup) {
         var syrupCappuccino = new SyrupCappuccino(intensity, mlOfMilk, syrup);
-        System.out.println("Making " + syrupCappuccino.coffee);
-        System.out.println("Intensity set to " + syrupCappuccino.getCoffeeIntensity());
-        System.out.println("Adding " + syrupCappuccino.getMlOfMilk() + " ml of milk");
-        System.out.println("Adding " + syrup + " syrup");
+        syrupCappuccino.recipeCoffee();
         return syrupCappuccino;
     }
 }

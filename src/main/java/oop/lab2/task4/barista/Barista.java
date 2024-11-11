@@ -235,30 +235,26 @@ public class Barista {
         catch (IOException ex) {
             ex.printStackTrace();
         }
-
+        Intensity intensity = askForIntensity();
         switch (choice) {
             case 1 -> {
-                Intensity intensity = askForIntensity();
+
                 coffee = Coffee.makeCoffee(intensity);
             }
             case 2 -> {
-                Intensity intensity = askForIntensity();
                 int water = askForWater();
                 coffee = Americano.makeAmericano(intensity, water);
             }
             case 3 -> {
-                Intensity intensity = askForIntensity();
                 int milk = askForMilk();
                 coffee = Cappuccino.makeCappuccino(intensity, milk);
             }
             case 4 -> {
-                Intensity intensity = askForIntensity();
                 int milk = askForMilk();
                 int pumpkin = askForPumpkin();
                 coffee = PumpkinSpiceLatte.makePumpkinSpiceLatte(intensity, milk, pumpkin);
             }
             case 5 -> {
-                Intensity intensity = askForIntensity();
                 int milk = askForMilk();
                 SyrupType syrup = askForSyrup();
                 coffee = SyrupCappuccino.makeSyrupCappuccino(intensity, milk, syrup);

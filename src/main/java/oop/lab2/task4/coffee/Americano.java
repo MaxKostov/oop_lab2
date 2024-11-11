@@ -26,11 +26,15 @@ public class Americano extends Coffee {
         System.out.println("Water: " + mlOfWater + " ml");
     }
 
+    @Override
+    public void recipeCoffee() {
+        super.recipeCoffee();
+        System.out.println("Adding " + mlOfWater + " ml of water");
+    }
+
     public static Coffee makeAmericano(Intensity intensityOfCoffee, int mlOfWater) {
         var americano = new Americano(intensityOfCoffee, mlOfWater);
-        System.out.println("Making " + americano.coffeeName);
-        System.out.println("Intensity set to " + intensityOfCoffee);
-        System.out.println("Adding " + mlOfWater + " ml of water");
+        americano.recipeCoffee();
         return americano;
     }
 }

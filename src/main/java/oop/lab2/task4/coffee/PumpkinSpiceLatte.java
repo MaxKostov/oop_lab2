@@ -26,12 +26,16 @@ public class PumpkinSpiceLatte extends Cappuccino {
         System.out.println("Pumpkin spice: " + mgOfPumpkinSpice + " mg");
     }
 
+    @Override
+    public void recipeCoffee() {
+        super.recipeCoffee();
+        System.out.println("Adding " + mgOfPumpkinSpice + " mg of pumpkins");
+    }
+
+
     public static PumpkinSpiceLatte makePumpkinSpiceLatte(Intensity intensity, int mlOfMilk, int mgOfPumpkinSpice) {
         var pumpkinSpiceLatte = new PumpkinSpiceLatte(intensity, mlOfMilk, mgOfPumpkinSpice);
-        System.out.println("Making " + pumpkinSpiceLatte.name);
-        System.out.println("Intensity set to " + pumpkinSpiceLatte.getCoffeeIntensity());
-        System.out.println("Adding " + pumpkinSpiceLatte.getMlOfMilk() + " ml of milk");
-        System.out.println("Adding " + mgOfPumpkinSpice + " mg of pumpkins");
+        pumpkinSpiceLatte.recipeCoffee();
         return pumpkinSpiceLatte;
     }
 }

@@ -26,11 +26,15 @@ public class Cappuccino extends Coffee {
         System.out.println("Milk: " + mlOfMilk + " ml");
     }
 
+    @Override
+    public void recipeCoffee() {
+        super.recipeCoffee();
+        System.out.println("Adding " + mlOfMilk + " ml of milk");
+    }
+
     public static Coffee makeCappuccino(Intensity intensity, int mlOfMilk) {
         var cappuccino = new Cappuccino(intensity, mlOfMilk);
-        System.out.println("Making " + cappuccino.coffee);
-        System.out.println("Intensity set to " + intensity);
-        System.out.println("Adding " + mlOfMilk + " ml of milk");
+        cappuccino.recipeCoffee();
         return cappuccino;
     }
 }

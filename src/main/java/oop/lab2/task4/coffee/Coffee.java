@@ -23,10 +23,14 @@ public class Coffee {
         System.out.println("Intensity: " + coffeeIntensity);
     }
 
+    public void recipeCoffee() {
+        System.out.println("Making: " + getName());
+        System.out.println("Intensity set to " + getCoffeeIntensity());
+    }
+
     public static Coffee makeCoffee(Intensity coffeeIntensity) {
         Coffee coffee = new Coffee(coffeeIntensity);
-        System.out.println("Opening Jacobs 3 in 1");
-        System.out.println("Fill it with hot water");
+        coffee.recipeCoffee();
         return coffee;
     }
 }
